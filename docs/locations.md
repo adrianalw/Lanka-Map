@@ -1,6 +1,6 @@
 # Lanka Map — Location Directory
 
-All 169 locations seeded into the database, organised by category.
+All 137 locations seeded into the database, organised by category. Additional POIs are imported via `scripts/fetch_pois.py` + `npm run seed:pois`.
 
 ---
 
@@ -225,7 +225,7 @@ All 169 locations seeded into the database, organised by category.
 | Museum | 6 |
 | Garden | 8 |
 | Other | 11 |
-| **Total** | **169** |
+| **Total** | **137** |
 
 ---
 
