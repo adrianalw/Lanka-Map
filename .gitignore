@@ -24,6 +24,9 @@ __pycache__/
 .venv/
 venv/
 
+# Generated POI data (re-run fetch_pois.py to regenerate)
+scripts/pois.json
+
 # macOS
 .DS_Store
 
