@@ -28,7 +28,3 @@ export async function DELETE() {
   res.cookies.delete(SESSION_COOKIE);
   return res;
 }
-
-export function isAuthenticated(req: NextRequest): boolean {
-  return req.cookies.get(SESSION_COOKIE)?.value === SESSION_VALUE;
-}
