@@ -59,7 +59,7 @@ export default function Map({ locations, onLocationSelect }: Props) {
         mapRef.current.removeLayer(clusterRef.current);
       }
 
-      const cluster = (L as unknown as { markerClusterGroup: () => L.MarkerClusterGroup }).markerClusterGroup({
+      const cluster = (L as unknown as { markerClusterGroup: (options?: L.MarkerClusterGroupOptions) => L.MarkerClusterGroup }).markerClusterGroup({
         chunkedLoading: true,
         maxClusterRadius: 60,
         showCoverageOnHover: false,
