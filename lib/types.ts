@@ -33,7 +33,27 @@ export interface Location {
   entry_fee: string;
   hours: string;
   photo_url: string | null;
+  photos?: string[] | null;
   created_at: string;
+}
+
+export interface Suggestion {
+  id: string;
+  location_name: string;
+  category?: string | null;
+  description?: string | null;
+  location_details?: string | null;
+  submitter_email?: string | null;
+  status: "pending" | "approved" | "rejected";
+  created_at: string;
+}
+
+export interface SuggestionInput {
+  location_name: string;
+  category?: string;
+  description?: string;
+  location_details?: string;
+  submitter_email?: string;
 }
 
 export interface LocationInput {

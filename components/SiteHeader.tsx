@@ -12,7 +12,8 @@ export default function SiteHeader({
 
   const navLinks = [
     { href: "/", label: "Map" },
-    { href: "/how-to", label: "How-To Guide" },
+    { href: "/suggest", label: "Suggest" },
+    { href: "/how-to", label: "Guide" },
     { href: "/contact", label: "Contact" },
   ];
 

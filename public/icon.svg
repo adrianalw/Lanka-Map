@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="#15803d"/>
+  <!-- Sri Lanka island silhouette simplified -->
+  <ellipse cx="256" cy="270" rx="90" ry="130" fill="#fff" opacity="0.95"/>
+  <!-- Map pin overlay -->
+  <circle cx="256" cy="210" r="36" fill="#15803d"/>
+  <circle cx="256" cy="210" r="20" fill="#fff"/>
+  <!-- Pin tail -->
+  <path d="M256 246 L238 310 L256 295 L274 310 Z" fill="#15803d"/>
+</svg>
