@@ -15,7 +15,7 @@ export default function LocationPanel({ location, onClose }: Props) {
       {/* Backdrop */}
       {isOpen && (
         <div
-          className="absolute inset-0 z-[400]"
+          className="absolute inset-0 z-[400] bg-black/20 backdrop-blur-[1px]"
           onClick={onClose}
         />
       )}
@@ -28,60 +28,85 @@ export default function LocationPanel({ location, onClose }: Props) {
       >
         {location && (
           <>
-            {/* Close button */}
-            <button
-              onClick={onClose}
-              className="absolute top-3 right-3 z-10 bg-white rounded-full w-8 h-8 flex items-center justify-center shadow text-gray-500 hover:text-gray-800 transition-colors"
-              aria-label="Close panel"
-            >
-              ✕
-            </button>
+            {/* Hero / Photo */}
+            <div className="relative flex-shrink-0">
+              {location.photo_url ? (
+                <>
+                  <img
+                    src={location.photo_url}
+                    alt={location.name}
+                    className="w-full h-52 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <span className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full mb-1.5">
+                      {location.category}
+                    </span>
+                    <h2 className="font-bold text-white text-xl leading-snug drop-shadow-sm">
+                      {location.name}
+                    </h2>
+                  </div>
+                </>
+              ) : (
+                <div className="h-28 bg-gradient-to-br from-green-800 to-green-600 flex items-end p-4">
+                  <div>
+                    <span className="inline-block bg-white/20 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full mb-1.5">
+                      {location.category}
+                    </span>
+                    <h2 className="font-bold text-white text-xl leading-snug">
+                      {location.name}
+                    </h2>
+                  </div>
+                </div>
+              )}
 
-            {/* Photo */}
-            {location.photo_url && (
-              <div className="flex-shrink-0">
-                <img
-                  src={location.photo_url}
-                  alt={location.name}
-                  className="w-full h-48 object-cover"
-                />
-              </div>
-            )}
+              {/* Close button */}
+              <button
+                onClick={onClose}
+                className="absolute top-3 right-3 z-10 bg-black/30 backdrop-blur-sm hover:bg-black/50 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
+                aria-label="Close panel"
+              >
+                ✕
+              </button>
+            </div>
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-5">
-              <span className="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full mb-2">
-                {location.category}
-              </span>
-              <h2 className="font-bold text-gray-900 text-xl leading-snug mb-3">
-                {location.name}
-              </h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="text-gray-600 text-sm leading-relaxed mb-5">
                 {location.description}
               </p>
 
-              <div className="flex flex-col gap-2 text-sm text-gray-600 mb-6">
-                {location.entry_fee && (
-                  <div className="flex gap-2">
-                    <span className="font-medium text-gray-800 w-16 flex-shrink-0">Entry</span>
-                    <span>{location.entry_fee}</span>
-                  </div>
-                )}
-                {location.hours && (
-                  <div className="flex gap-2">
-                    <span className="font-medium text-gray-800 w-16 flex-shrink-0">Hours</span>
-                    <span>{location.hours}</span>
-                  </div>
-                )}
-              </div>
+              {(location.entry_fee || location.hours) && (
+                <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 flex flex-col gap-3 mb-5">
+                  {location.entry_fee && (
+                    <div className="flex items-start gap-3">
+                      <span className="text-base mt-0.5">🎫</span>
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Entry Fee</p>
+                        <p className="text-sm text-gray-700 mt-0.5">{location.entry_fee}</p>
+                      </div>
+                    </div>
+                  )}
+                  {location.hours && (
+                    <div className="flex items-start gap-3">
+                      <span className="text-base mt-0.5">🕐</span>
+                      <div>
+                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Hours</p>
+                        <p className="text-sm text-gray-700 mt-0.5">{location.hours}</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               <a
                 href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-green-700 text-white text-sm font-semibold py-3 rounded-lg hover:bg-green-800 transition-colors"
+                className="flex items-center justify-center gap-2 w-full bg-green-700 text-white text-sm font-semibold py-3 rounded-xl hover:bg-green-800 active:bg-green-900 transition-colors"
               >
-                Get Directions
+                <span>Get Directions</span>
+                <span>→</span>
               </a>
             </div>
           </>

@@ -47,8 +47,9 @@ export default function HomePage() {
       {/* Map */}
       <div className="flex-1 relative">
         {loading ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-            <p className="text-gray-500">Loading map…</p>
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-green-50">
+            <div className="w-10 h-10 border-4 border-green-200 border-t-green-700 rounded-full animate-spin mb-3" />
+            <p className="text-green-700 text-sm font-medium">Loading map…</p>
           </div>
         ) : (
           <Map locations={filtered} onLocationSelect={setSelectedLocation} />
@@ -60,7 +61,7 @@ export default function HomePage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-400 text-xs text-center py-2">
+      <footer className="bg-gray-900 text-gray-500 text-xs text-center py-2">
         Map data © OpenStreetMap contributors · Built with ♥ for Sri Lanka
       </footer>
     </div>
